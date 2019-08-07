@@ -11,6 +11,12 @@ class RoomsController < ApplicationController
     redirect_to root_path
   end
 
+  def show
+    @current_room = Room.find_by(id: params[:id])
+    @invites = current_user.invites
+    render "static_pages/home"
+  end
+
   private
 
   def room_params
